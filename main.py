@@ -7,10 +7,14 @@ import math, time, random
 import globals
 
 from vector import Vector
+from interactions import Interaction
+from walls import *
+from levels import *
 from menu import Menu
 from spritesheet import SpriteSheet
 
 #CONSTANTS - use all caps, separated by underscores
+CANVAS_DIMS = globals.CANVAS_DIMS
 PLAYER_WALK_SPEED = 2
 PLAYER_START_POS = [CANVAS_DIMS[0]/4, CANVAS_DIMS[1]/4]
 menu = Menu()
@@ -70,12 +74,11 @@ list_walls = [wall1, wall3, wall4, wall6]
 
 player = Player()
 enemy1 = Enemy(((CANVAS_DIMS[0]/6)*5,(CANVAS_DIMS[1]/8)*2),1,(20,20))
-
-list_entities = [player, enemy1]
+list_entities = [enemy1]
 
 kbd = Keyboard()
 
-interaction = Interaction(list_walls, list_entities)
+interaction = Interaction(list_walls, list_entities, player)
 
 frame = simplegui.create_frame("Stealth Game", CANVAS_DIMS[0], CANVAS_DIMS[1])
 frame.set_canvas_background('White')

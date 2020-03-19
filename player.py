@@ -6,9 +6,9 @@ except ImportError:
 from vector import Vector
 from spritesheet import SpriteSheet
 
-from healthSpriteSheet import HealthSpriteSheet
-from health import Health
-from fireball import Fireball
+#from healthSpriteSheet import HealthSpriteSheet
+#from health import Health
+#from fireball import Fireball
 import globals
 
 CANVAS_DIMS = globals.CANVAS_DIMS

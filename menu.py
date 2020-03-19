@@ -3,7 +3,9 @@ try:
 except ImportError:
     import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
     
-from user305_KmzQMQ7fY0abk6T import *
+import globals
+
+CANVAS_DIMS = globals.CANVAS_DIMS
 
 class Menu:
     def __init__(self):
