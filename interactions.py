@@ -7,6 +7,7 @@ import globals
 from vector import Vector
 from player import Player
 import menu
+import keyboard
 
 class Interaction:
     def __init__(self, list_walls, list_entities, player):
@@ -72,5 +73,5 @@ class Interaction:
             for y in self.list_walls:
                 y.draw(canvas)            
         #lives(canvas)
-        #menu.draw(canvas)
+        menu.draw(canvas)
         #menu.update()

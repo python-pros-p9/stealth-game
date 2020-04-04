@@ -60,7 +60,7 @@ class Interaction:
         
     def draw(self, canvas):
         #canvas.draw_image(simplegui.load_image("https://cdn.shopify.com/s/files/1/0148/8783/products/Texture-example-image_1024x1024.jpg"), menu.TITLETEXT_CENTRE, menu.TITLETEXT_DIMS, menu.TITLETEXT_POS, menu.TITLETEXT_SIZE)
-        if menu.game_start and not menu.game_end:
+        if globals.game_start and not globals.game_end:
             self.update()
             for x in self.list_entities:
                 x.draw(canvas)

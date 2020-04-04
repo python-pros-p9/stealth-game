@@ -5,7 +5,6 @@ except ImportError:
 
 from player import Player
 from interactions import Interaction
-from keyboard import Keyboard
 #from playerInteraction import PlayerInteraction
 from walls import *
 from interactionSet import *

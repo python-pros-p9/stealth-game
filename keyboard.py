@@ -3,6 +3,8 @@ try:
 except ImportError:
     import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
     
+import globals
+    
 class Keyboard:
     def __init__(self):
         self.right = False
@@ -22,7 +24,7 @@ class Keyboard:
         if key == simplegui.KEY_MAP['space']:
             pass
         if key == simplegui.KEY_MAP['p']:
-            menu.paused = True
+            globals.game_paused = True
 
     def keyUp(self, key): # tests for keyUps of direction keys
         if key == simplegui.KEY_MAP['w']:

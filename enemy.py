@@ -3,6 +3,7 @@ try:
 except ImportError:
     import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
 
+import globals
 from vector import Vector
 
 class Enemy:
@@ -18,7 +19,7 @@ class Enemy:
          #self.maxSpin = 10
         
     def update(self):
-        if not menu.paused:
+        if not globals.game_paused:
             self.pos.add(self.vel.multiply(self.speed))
             self.vel.multiply(0.7)
         

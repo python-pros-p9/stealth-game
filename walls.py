@@ -17,7 +17,7 @@ class TallWall:
         self.edge_l = xpos - self.border
         
     def draw(self, canvas):
-        canvas.draw_line([self.xpos, 0],[self.xpos, CANVAS_DIMS[1]], self.border, self.colour)
+        canvas.draw_line([self.xpos, 0],[self.xpos, globals.CANVAS_DIMS[1]], self.border, self.colour)
         
     def hit(self, player):        
         if self.edge_r >= player.offset_l() >= self.edge_l:
@@ -37,7 +37,7 @@ class WideWall:
         self.edge_b = ypos - self.border
         
     def draw(self, canvas):
-        canvas.draw_line([0, self.ypos],[CANVAS_DIMS[0], self.ypos], self.border, self.colour)
+        canvas.draw_line([0, self.ypos],[globals.CANVAS_DIMS[0], self.ypos], self.border, self.colour)
         
     def hit(self, player):        
         if self.edge_t >= player.offset_u() >= self.edge_b:

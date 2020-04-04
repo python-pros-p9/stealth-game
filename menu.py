@@ -52,7 +52,7 @@ class Menu:
     def draw(self, canvas):
         if not globals.game_start and globals.show_menu:
             canvas.draw_image(self.TITLETEXT, self.TITLETEXT_CENTRE, self.TITLETEXT_DIMS, self.TITLETEXT_POS, self.TITLETEXT_SIZE)
-            canvas.draw_image(self.BUTTON_START, self.BUTTON_CENTRE, self.BUTTON_DIMS, self.BUTTON_MAIN_POS, self.BUTTON_SIZE)
+            canvas.draw_image(self.BUTTON_START, self.BUTTON_CENTRE, self.BUTTON_DIMS, self.BUTTON_START_MAIN_POS, self.BUTTON_SIZE)
             canvas.draw_image(self.BUTTON_HELP, self.BUTTON_CENTRE, self.BUTTON_DIMS, self.BUTTON_HELP_MAIN_POS, self.BUTTON_SIZE)
             canvas.draw_image(self.BUTTON_SCORES, self.BUTTON_CENTRE, self.BUTTON_DIMS, self.BUTTON_SCORES_POS, self.BUTTON_SIZE)
             

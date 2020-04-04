@@ -15,14 +15,14 @@ CANVAS_DIMS = globals.CANVAS_DIMS
 
 class Player:
     def __init__(self): #columns,rows
-        self.sprite_up = SpriteSheet("https://raw.githubusercontent.com/python-pros-p9/stealth-game/master/doc_up.png",(9,1),(60,60),10)
-        self.sprite_right = SpriteSheet("https://raw.githubusercontent.com/python-pros-p9/stealth-game/master/doc_right.png",(9,1),(60,60),10)
-        self.sprite_down = SpriteSheet("https://raw.githubusercontent.com/python-pros-p9/stealth-game/master/doc_down.png",(9,1),(60,60),10)
-        self.sprite_left = SpriteSheet("https://raw.githubusercontent.com/python-pros-p9/stealth-game/master/doc_left.png",(9,1),(60,60),10)
+        self.sprite_up = SpriteSheet("https://raw.githubusercontent.com/python-pros-p9/stealth-game/master/images/doc_up.png",(9,1),(60,60),10)
+        self.sprite_right = SpriteSheet("https://raw.githubusercontent.com/python-pros-p9/stealth-game/master/images/doc_right.png",(9,1),(60,60),10)
+        self.sprite_down = SpriteSheet("https://raw.githubusercontent.com/python-pros-p9/stealth-game/master/images/doc_down.png",(9,1),(60,60),10)
+        self.sprite_left = SpriteSheet("https://raw.githubusercontent.com/python-pros-p9/stealth-game/master/images/doc_left.png",(9,1),(60,60),10)
         self.sprite_current = self.sprite_down
         self.pos = Vector(CANVAS_DIMS[0]/4, CANVAS_DIMS[1]/4)
         self.vel = Vector(0,0)
-        self.radius = max(self.sprite_current.frameHeight, self.sprite_current.frameWidth)/2
+        self.radius = max(self.sprite_current.frameHeight, self.sprite_current.frameWidth,2)/2
         self.colour = "Blue"
         self.speed = 2
         #self.sprite = SpriteSheet("https://raw.githubusercontent.com/python-pros-p9/stealth-game/master/coronavirus.png",(1,1),(60,60))
@@ -33,7 +33,7 @@ class Player:
         self.vel.reflect(normal)
         
     def update(self):
-        if not menu.paused:
+        if not globals.game_paused:
             self.pos.add(self.vel)
             self.vel.multiply(0.99)
     
