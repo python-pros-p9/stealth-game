@@ -3,9 +3,10 @@ try:
 except ImportError:
     import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
 
+import globals
 from vector import Vector
 from player import Player
-from menu import Menu
+import menu
 
 class Interaction:
     def __init__(self, list_walls, list_entities, player):
@@ -61,8 +62,7 @@ class Interaction:
         self.player.update()
         
     def draw(self, canvas):
-        #canvas.draw_image(simplegui.load_image("https://cdn.shopify.com/s/files/1/0148/8783/products/Texture-example-image_1024x1024.jpg"), menu.TITLETEXT_CENTRE, menu.TITLETEXT_DIMS, menu.TITLETEXT_POS, menu.TITLETEXT_SIZE)
-        if menu.game_start and not menu.game_end:
+        if globals.game_start and not globals.game_end:
             self.update()
             player.draw(canvas)
             player.update()
@@ -71,6 +71,6 @@ class Interaction:
                 x.update()
             for y in self.list_walls:
                 y.draw(canvas)            
-        lives(canvas)
-        menu.draw(canvas)
+        #lives(canvas)
+        #menu.draw(canvas)
         #menu.update()
