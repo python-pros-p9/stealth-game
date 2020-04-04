@@ -8,7 +8,7 @@ from vector import Vector
 from player import Player
 import menu
 import keyboard
-
+import main 
 class Interaction:
     def __init__(self, list_walls, list_entities, player):
         self.player = player
