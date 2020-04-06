@@ -17,8 +17,8 @@ class Interaction:
         self.list_entities = list_entities
         
     def update(self): # changes player's velocity and spriteset based on keyboard events
-        kbd = kbd
-        player = player
+        #kbd = kbd
+        #player = player
 
         if kbd.right & kbd.left:
             self.player.vel.x = 0
