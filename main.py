@@ -56,8 +56,6 @@ class Keyboard:
             self.right = False
         if key == simplegui.KEY_MAP['space']:
             pass
-
-
     
 def mouse_handler(pos):
     #global menu
@@ -163,7 +161,7 @@ class Interaction:
             for y in self.list_walls:
                 y.draw(canvas)            
         #lives(canvas)
-        #menu.draw(canvas)
+        menu.draw(canvas)
         #menu.update()
 
 
