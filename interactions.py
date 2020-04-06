@@ -7,19 +7,16 @@ import globals
 from vector import Vector
 from player import Player
 import menu
-import keyboard
-#from main import kbd, player, list_entities
+#import keyboard
+from main import kbd, player, list_entities
 
 class Interaction:
-    def __init__(self, list_walls, list_entities, player):
+    def __init__(self, kbd, list_walls, list_entities, player,):
         self.player = player
         self.list_walls = list_walls
         self.list_entities = list_entities
         
     def update(self): # changes player's velocity and spriteset based on keyboard events
-        #kbd = kbd
-        #player = player
-
         if kbd.right & kbd.left:
             self.player.vel.x = 0
         elif kbd.right: 

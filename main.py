@@ -25,6 +25,40 @@ menu = menu.Menu()
 level = 0
 #Controls
 # WASD (up, left, down, right) to dictate movement direction
+class Keyboard:
+    def __init__(self):
+        self.right = False
+        self.left = False
+        self.up = False
+        self.down = False
+
+    def keyDown(self, key): # tests for keyDowns of direction keys
+        if key == simplegui.KEY_MAP['w']:
+            self.up = True
+        if key == simplegui.KEY_MAP['a']:
+            self.left = True
+        if key == simplegui.KEY_MAP['s']:
+            self.down = True
+        if key == simplegui.KEY_MAP['d']:
+            self.right = True
+        if key == simplegui.KEY_MAP['space']:
+            pass
+        if key == simplegui.KEY_MAP['p']:
+            globals.game_paused = True
+
+    def keyUp(self, key): # tests for keyUps of direction keys
+        if key == simplegui.KEY_MAP['w']:
+            self.up = False
+        if key == simplegui.KEY_MAP['a']:
+            self.left = False
+        if key == simplegui.KEY_MAP['s']:
+            self.down = False
+        if key == simplegui.KEY_MAP['d']:
+            self.right = False
+        if key == simplegui.KEY_MAP['space']:
+            pass
+
+
     
 def mouse_handler(pos):
     #global menu
@@ -78,9 +112,9 @@ player = Player()
 enemy1 = enemy.Enemy(((CANVAS_DIMS[0]/6)*5,(CANVAS_DIMS[1]/8)*2),1,(20,20))
 list_entities = [enemy1]
 
-kbd = keyboard.Keyboard()
+kbd = Keyboard()
 
-interaction = Interaction(list_walls, list_entities, player)
+interaction = Interaction(kbd, list_walls, list_entities, player)
 
 frame = simplegui.create_frame("COVID-19 Simulator 2020", CANVAS_DIMS[0], CANVAS_DIMS[1])
 frame.set_canvas_background('White')
