@@ -16,3 +16,7 @@ A CS1822 Project by George Kodankadanth, Shinyoung Park, William Thain, and Yusu
     * Ensure your connection to the internet is stable
 1. A TCL/TK error
     * An issue with SimpleGUICS2Pygame on Mac, in order to run our game, please switch to Windows, or Linux
+
+## Attributions
+This project uses some sprites by 'Acolyte' on the RPG maker forums
+Link: https://forums.rpgmakerweb.com/index.php?threads/doctor-who-resources.63931/
