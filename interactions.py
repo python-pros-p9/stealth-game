@@ -8,7 +8,8 @@ from vector import Vector
 from player import Player
 import menu
 import keyboard
-import main 
+from main import kbd, player, list_entities
+
 class Interaction:
     def __init__(self, list_walls, list_entities, player):
         self.player = player
@@ -16,8 +17,8 @@ class Interaction:
         self.list_entities = list_entities
         
     def update(self): # changes player's velocity and spriteset based on keyboard events
-        kbd = main.kbd
-        player = main.player
+        kbd = kbd
+        player = player
 
         if kbd.right & kbd.left:
             self.player.vel.x = 0
@@ -59,7 +60,7 @@ class Interaction:
                 print('"Wall collision = True"')
                 self.player.bounce(wall.normal)
                 
-        for entity in main.list_entities:
+        for entity in list_entities:
             entity.update()
       
         self.player.update()
@@ -67,8 +68,8 @@ class Interaction:
     def draw(self, canvas):
         if globals.game_start and not globals.game_end:
             self.update()
-            main.player.draw(canvas)
-            main.player.update()
+            player.draw(canvas)
+            player.update()
             for x in self.list_entities:
                 x.draw(canvas)
                 x.update()

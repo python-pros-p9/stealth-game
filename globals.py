@@ -1,10 +1,11 @@
-# the size of the map/window
-CANVAS_DIMS = (1000, 600)
+#  CONSTANTS
+CANVAS_DIMS = (1000, 600) # the size of the map/window
 
-game_start = False
-game_end = False
-game_paused = False
-game_won = False
-show_menu = True
-show_help = False
-show_scores = False
+# VARIABLES
+game_start = False # is the actual game running?
+game_end = False # has the game ended?
+game_paused = False # is the game paused?
+game_won = False # did the player win?
+show_menu = True # are we on the main menu?
+show_help = False # are we on the help menu?
+show_scores = False # are we on the "scores" page?

@@ -14,7 +14,6 @@ from interactions import Interaction
 import walls
 import levels
 from spritesheet import SpriteSheet
-import main
 
 #CONSTANTS - use all caps, separated by underscores
 CANVAS_DIMS = globals.CANVAS_DIMS
