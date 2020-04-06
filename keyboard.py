@@ -37,10 +37,3 @@ class Keyboard:
             self.right = False
         if key == simplegui.KEY_MAP['space']:
             pass
-
-    def draw(self, canvas):
-        canvas.draw_circle(self.pos.get_p(),
-                           self.radius,
-                           self.border,
-                           self.colour,
-                           self.colour)

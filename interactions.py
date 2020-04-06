@@ -16,6 +16,8 @@ class Interaction:
         self.list_entities = list_entities
         
     def update(self): # changes player's velocity and spriteset based on keyboard events
+        kbd = main.kbd
+        player = main.player
 
         if kbd.right & kbd.left:
             self.player.vel.x = 0
@@ -57,7 +59,7 @@ class Interaction:
                 print('"Wall collision = True"')
                 self.player.bounce(wall.normal)
                 
-        for entity in list_entities:
+        for entity in main.list_entities:
             entity.update()
       
         self.player.update()
@@ -65,13 +67,13 @@ class Interaction:
     def draw(self, canvas):
         if globals.game_start and not globals.game_end:
             self.update()
-            player.draw(canvas)
-            player.update()
+            main.player.draw(canvas)
+            main.player.update()
             for x in self.list_entities:
                 x.draw(canvas)
                 x.update()
             for y in self.list_walls:
                 y.draw(canvas)            
         #lives(canvas)
-        menu.draw(canvas)
+        #menu.draw(canvas)
         #menu.update()

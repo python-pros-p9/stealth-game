@@ -28,7 +28,7 @@ level = 0
 # WASD (up, left, down, right) to dictate movement direction
     
 def mouse_handler(pos):
-    global menu
+    #global menu
     if globals.show_help or globals.show_scores or globals.game_end or globals.game_won:
         globals.show_help = globals.game_end = globals.game_won = globals.show_scores = False
         globals.show_menu = True
@@ -68,10 +68,10 @@ def mouse_handler(pos):
             #menu = Menu()
             print("menu button pressed")   
             
-wall1 = TallWall(0)
-wall3 = TallWall(CANVAS_DIMS[0])
-wall4 = WideWall(0)
-wall6 = WideWall(CANVAS_DIMS[1])
+wall1 = walls.TallWall(0)
+wall3 = walls.TallWall(CANVAS_DIMS[0])
+wall4 = walls.WideWall(0)
+wall6 = walls.WideWall(CANVAS_DIMS[1])
 
 list_walls = [wall1, wall3, wall4, wall6]
 

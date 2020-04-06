@@ -6,8 +6,9 @@ except ImportError:
 from player import Player
 from interactions import Interaction
 #from playerInteraction import PlayerInteraction
-from walls import *
-from interactionSet import *
+import walls
 #from projectileCollision import ProjectileCollision
 import globals
-from scores import *
+
+class Levels:
+    pass
