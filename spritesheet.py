@@ -7,7 +7,7 @@ class SpriteSheet:
     def __init__(self, url, maxIndex, size, frameDelay=1):
         self.url = url #image url
         self.img = simplegui.load_image(url)
-        #self.index = (0, 0)
+        self.index = (0, 0)
         #print(self.index)
         self.maxIndex = maxIndex #how many (columns,rows) there are in the spritesheet
         self.frameWidth = self.img.get_width() / maxIndex[0]
