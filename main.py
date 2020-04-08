@@ -7,7 +7,7 @@ import math, time, random
 import globals
 import menu
 import keyboard
-import enemy
+from enemy1 import Enemy
 from player import Player
 from vector import Vector
 import walls
@@ -99,8 +99,9 @@ def mouse_handler(pos):
             print("menu button pressed")   
 
 class Interaction:
-    def __init__(self, kbd, list_walls, list_entities, player,):
+    def __init__(self, kbd, list_walls, list_entities, player,enemy):
         self.player = player
+        self.enemy = enemy
         self.list_walls = list_walls
         self.list_entities = list_entities
         
@@ -145,11 +146,16 @@ class Interaction:
                 print('"Wall collision = True"')
                 self.player.bounce(wall.normal)
                 
+         for wall in self.list_walls:
+            s = wall.hit(enemy)
+            if s!= 0:
+                self.enemy.bounce(wall.normal)
+                
         for entity in list_entities:
             entity.update()
       
         self.player.update()
-        
+        self.enemy.update()
     def draw(self, canvas):
         if globals.game_start and not globals.game_end:
             self.update()
@@ -174,12 +180,12 @@ wall6 = walls.WideWall(CANVAS_DIMS[1])
 list_walls = [wall1, wall3, wall4, wall6]
 
 player = Player()
-enemy1 = enemy.Enemy(((CANVAS_DIMS[0]/6)*5,(CANVAS_DIMS[1]/8)*2),1,(20,20))
-list_entities = [enemy1]
+enemy = Enemy()
+list_entities = [enemy]
 
 kbd = Keyboard()
 
-interaction = Interaction(kbd, list_walls, list_entities, player)
+interaction = Interaction(kbd, list_walls, list_entities, player, enemy)
 
 frame = simplegui.create_frame("COVID-19 Simulator 2020", CANVAS_DIMS[0], CANVAS_DIMS[1])
 frame.set_canvas_background('White')
