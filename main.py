@@ -146,7 +146,7 @@ class Interaction:
                 print('"Wall collision = True"')
                 self.player.bounce(wall.normal)
                 
-         for wall in self.list_walls:
+        for wall in self.list_walls:
             s = wall.hit(enemy)
             if s!= 0:
                 self.enemy.bounce(wall.normal)
