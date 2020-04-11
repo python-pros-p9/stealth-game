@@ -106,6 +106,7 @@ class Interaction:
         self.list_entities = list_entities
         
     def update(self): # changes player's velocity and spriteset based on keyboard events
+        global player
         if kbd.right & kbd.left:
             self.player.vel.x = 0
         elif kbd.right: 
@@ -139,7 +140,12 @@ class Interaction:
         elif kbd.down:            
             self.player.vel.y = player.speed
             self.player.sprite_current = self.player.sprite_down
-
+        
+        for player in list_player:
+            s = player.hit(enemy)
+            if s!= 0:
+                self.enemy.bounce(player.normal)
+                
         for wall in self.list_walls:
             s = wall.hit(player)
             if s!= 0:
@@ -182,7 +188,7 @@ list_walls = [wall1, wall3, wall4, wall6]
 player = Player()
 enemy = Enemy()
 list_entities = [enemy]
-
+list_player = [player]
 kbd = Keyboard()
 
 interaction = Interaction(kbd, list_walls, list_entities, player, enemy)
