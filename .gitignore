@@ -1,6 +1,1 @@
-
-__pycache__/spritesheet.cpython-38.pyc
-__pycache__/menu.cpython-38.pyc
-__pycache__/levels.cpython-38.pyc
-__pycache__/keyboard.cpython-38.pyc
-__pycache__/globals.cpython-38.pyc
+*.pyc

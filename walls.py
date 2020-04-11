@@ -7,17 +7,18 @@ from vector import Vector
 import globals
 
 class TallWall:
-    def __init__(self, xpos):
-        self.xpos = xpos
+    def __init__(self, start_pos, end_pos):
+        self.start_pos = start_pos
+        self.end_pos = end_pos
         self.border = 10
         self.colour = 'Red'
         self.width = 10
         self.normal = Vector(1,0)
-        self.edge_r = xpos + self.border
-        self.edge_l = xpos - self.border
+        self.edge_r = start_pos[0] + self.border
+        self.edge_l = start_pos[0] - self.border
         
     def draw(self, canvas):
-        canvas.draw_line([self.xpos, 0],[self.xpos, globals.CANVAS_DIMS[1]], self.border, self.colour)
+        canvas.draw_line(self.start_pos,self.end_pos, self.border, self.colour)
         
     def hit(self, player):        
         if self.edge_r >= player.offset_l() >= self.edge_l:
@@ -27,17 +28,18 @@ class TallWall:
         else: return 0
     
 class WideWall:
-    def __init__(self, ypos):
-        self.ypos = ypos
+    def __init__(self, start_pos, end_pos):
+        self.start_pos = start_pos
+        self.end_pos = end_pos
         self.border = 10
         self.colour = 'Red'
         self.width = 10
-        self.normal = Vector(0,1)
-        self.edge_t = ypos + self.border
-        self.edge_b = ypos - self.border
+        self.normal = Vector(1,0)
+        self.edge_t = start_pos[0] + self.border
+        self.edge_b = start_pos[0] - self.border
         
     def draw(self, canvas):
-        canvas.draw_line([0, self.ypos],[globals.CANVAS_DIMS[0], self.ypos], self.border, self.colour)
+        canvas.draw_line(self.start_pos,self.end_pos, self.border, self.colour)
         
     def hit(self, player):        
         if self.edge_t >= player.offset_u() >= self.edge_b:

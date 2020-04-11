@@ -5,13 +5,11 @@ except ImportError:
 
 from vector import Vector
 from spritesheet import SpriteSheet
-
+from keyboard import Keyboard
 #from healthSpriteSheet import HealthSpriteSheet
 #from health import Health
 #from fireball import Fireball
 import globals
-
-CANVAS_DIMS = globals.CANVAS_DIMS
 
 class Player:
     def __init__(self): #columns,rows
@@ -20,12 +18,11 @@ class Player:
         self.sprite_down = SpriteSheet("https://raw.githubusercontent.com/python-pros-p9/stealth-game/master/images/doc_down.png",(9,1),(60,60),10)
         self.sprite_left = SpriteSheet("https://raw.githubusercontent.com/python-pros-p9/stealth-game/master/images/doc_left.png",(9,1),(60,60),10)
         self.sprite_current = self.sprite_down
-        self.pos = Vector(CANVAS_DIMS[0]/4, CANVAS_DIMS[1]/4)
+        self.pos = globals.player_pos
         self.vel = Vector(0,0)
         self.radius = max(self.sprite_current.frameHeight, self.sprite_current.frameWidth,2)/2
         self.colour = "Blue"
         self.speed = 2
-        #self.sprite = SpriteSheet("https://raw.githubusercontent.com/python-pros-p9/stealth-game/master/coronavirus.png",(1,1),(60,60))
         self.border = 1
         self.offset = self.radius+1
         
@@ -33,9 +30,16 @@ class Player:
         self.vel.reflect(normal)
         
     def update(self):
+        #if 0.1 >= self.vel >= -0.1 and 0.1 >= self.vel.y >= -0.1:
+        #    self.sprite_current.animated = False
+        #else: 
+        #    self.sprite_current.animated = True 
+
         if not globals.game_paused:
             self.pos.add(self.vel)
-            self.vel.multiply(0.99)
+            self.vel.multiply(0.80)
+            self.sprite_current.update()
+        
     
     def offset_l(self):
         return self.pos.x - (self.radius+1)
@@ -60,4 +64,3 @@ class Player:
     def draw(self, canvas):
         canvas.draw_circle(self.pos.get_p(),self.radius,self.border,self.colour,self.colour)
         self.sprite_current.draw(canvas, self.pos.get_p())
-        

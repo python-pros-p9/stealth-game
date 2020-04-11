@@ -2,41 +2,42 @@ try:
     import simplegui
 except ImportError:
     import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
-
-import globals
+    
 from vector import Vector
+import globals
+from spritesheet import SpriteSheet
 
 class Enemy:
-    def __init__(self, pos, vel, dims):
-        self.pos = Vector(pos[0],pos[1])
-        self.vel = Vector(0,0)
+    def __init__(self, pos, vel, dims): #columns,rows
+        self.sprite = SpriteSheet("https://raw.githubusercontent.com/python-pros-p9/stealth-game/master/images/coronavirus.png",(1,1),dims,10)
+        self.pos = pos
+        self.vel = vel
         self.dims = dims
+        self.radius = 25
         self.colour = "Red"
-        #self.sprite = SpriteSheet("https://raw.githubusercontent.com/python-pros-p9/stealth-game/master/whitebloodcell.png",(1,1),(60,60))
+        self.speed = 2
         self.border = 1
-         #self.viewAng = 70 
-        self.speed = 20
-         #self.maxSpin = 10
+        self.offset = self.radius+1
+        
+    def bounce(self, normal):
+        self.vel.reflect(normal)
         
     def update(self):
         if not globals.game_paused:
-            self.pos.add(self.vel.multiply(self.speed))
-            self.vel.multiply(0.7)
-        
-    def draw(self, canvas):
-        canvas.draw_circle(self.pos.get_p(),max(self.dims[0],self.dims[1]),self.border,self.colour,self.colour)
-        
-    def target(self, pos):
-        self.vel = Vector(pos.get_p()[0] - self.pos.get_p()[0], pos.get_p()[1] - self.pos.get_p()[1]).normalize()
-        
-#class WhiteCell(Enemy):
-#    def __init__(self,pos):
-#        super().__init__("https://raw.githubusercontent.com/python-pros-p9/stealth-game/master/whitebloodcell.png",(60,60,) pos, 1)
-#        self.radius = 20
-#        self.border = 1
-#        #self.health = Health()
-#        self.currentlyAttacking = True
-#        self.attackCount = 0
+            self.pos.add(self.vel)
     
-class RedCell:
-    pass
+    def offset_l(self):
+        return self.pos.x - (self.radius+1)
+    
+    def offset_r(self):
+        return self.pos.x + (self.radius+1)
+        
+    def offset_u(self):
+        return self.pos.y + (self.radius+1)
+    
+    def offset_d(self):
+        return self.pos.y - (self.radius+1)
+            
+    def draw(self, canvas):
+        canvas.draw_circle(self.pos.get_p(),self.radius,self.border,self.colour,self.colour)
+        self.sprite.draw(canvas, self.pos.get_p())
