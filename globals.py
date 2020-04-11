@@ -9,3 +9,5 @@ game_won = False # did the player win?
 show_menu = True # are we on the main menu?
 show_help = False # are we on the help menu?
 show_scores = False # are we on the "scores" page?
+score = 0
+current_level = 0
