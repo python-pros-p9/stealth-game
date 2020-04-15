@@ -28,6 +28,8 @@ class Player:
         #self.sprite = SpriteSheet("https://raw.githubusercontent.com/python-pros-p9/stealth-game/master/coronavirus.png",(1,1),(60,60))
         self.border = 1
         self.offset = self.radius+1
+        self.edge = self.radius - self.border
+        self.normal = Vector(1,0)
         
     def bounce(self, normal):
         self.vel.reflect(normal)
@@ -61,3 +63,6 @@ class Player:
         canvas.draw_circle(self.pos.get_p(),self.radius,self.border,self.colour,self.colour)
         self.sprite_current.draw(canvas, self.pos.get_p())
         
+    def hit(self, ball):
+        distance = self.pos.copy().subtract(ball.pos).length()
+        return distance - ball.radius <= self.edge
