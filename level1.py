@@ -7,7 +7,7 @@ from vector import Vector
 from levels import Levels
 import walls
 from enemy import Enemy
-#from rock import Rock
+#from obstacle import Obstacle
 #from meleeEnemy import MeleeEnemy
 #from rangedEnemy import RangedEnemy
 from doors import Door
@@ -19,19 +19,15 @@ import globals
 # stores values for level
 class Level1(Levels):
     def __init__(self):
-        globals.levels.append(self)
-        #self.Enemies = [Enemy(((globals.CANVAS_DIMS[0] / 9) * 5, (globals.CANVAS_DIMS[1] / 9) * 2)), Enemy(((globals.CANVAS_DIMS[0] / 9) * 8, (globals.CANVAS_DIMS[1] / 9) * 7))]
+        Levels.levels.append(self)
         self.Enemies = [ Enemy((((globals.CANVAS_DIMS[0]/9)*5),((globals.CANVAS_DIMS[1]/9)*2)),Vector(2,2),(25,25))]
-        #self.RangedEnemies = []
         self.Obstacles =[] # [Rock(((globals.CANVAS_DIMS[0] / 6) * 2, (globals.CANVAS_DIMS[1] / 8) * 3)), Rock(((globals.CANVAS_DIMS[0] / 9) * 7, (globals.CANVAS_DIMS[1] / 5) * 4))]
         self.Doors = [Door(0, 0, 1)]
-        #self.Room = Room()
-
         self.Walls = [walls.TallWall((0,0),(0,globals.CANVAS_DIMS[1])),
         walls.TallWall((globals.CANVAS_DIMS[0],0),globals.CANVAS_DIMS),
         walls.WideWall((0,0),(globals.CANVAS_DIMS[0],0)),
         walls.WideWall((globals.CANVAS_DIMS[0],0),(globals,globals.CANVAS_DIMS))]
 
-    def LoadLevel(self, Enemies, Walls, Doors, Obstacles):
-        #super().LoadLevel(self.Enemies, self.Walls, self.Doors, self.Obstacles)
+    def LoadLevel(self):
+        super().LoadLevel(self.Enemies, self.Walls, self.Doors, self.Obstacles)
         Levels.roomText = 1

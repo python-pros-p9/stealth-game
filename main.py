@@ -8,6 +8,7 @@ import globals
 from menu import Menu
 from keyboard import Keyboard
 from enemy import Enemy
+#from interactions import Interaction
 from player import Player
 from vector import Vector
 from walls import WideWall
@@ -22,7 +23,7 @@ menu = Menu()
 
 level1 = Level1()
 
-def draw(self, canvas):
+def draw(canvas):
     if globals.game_start and not globals.game_end:
         Levels.update()
         Levels.draw(canvas)

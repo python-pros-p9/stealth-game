@@ -16,17 +16,56 @@ from interactions import Interaction
 #projectileCollision = ProjectileCollision(player)
 
 class Levels:
+    Walls = []
+    levels = []         # list of levels, appended as they load
+    Enemies = []        # list of enemies
+    Obstacles =  []     # list of obstacles
+    Doors = []          # list of doorways
+    PickUps = []        # list of collectable items (lives etc.)
+
+    #room = None # background for level
+    levels = []  # list of levels. levels get appended here when they load
+    #MeleeEnemies = []  # list of melee enemies
+    #ObjInteractions = []  # just initialising var to store interactions between melee enemies
+    #RangedEnemies = []  # list of ranged enemies
+    #Obstacles = []  # List of obstacles
+    #FriendlyProjectiles = []  # list of projectiles
+    #EnemyProjectiles = []
+    #wall_interactions = []  # list of wall interactions to help keep player within the walls
+    #DoorInteractions = []  # list of interactions for above doors
+    #roomText = 0  # text to represent what room the player is in
+
     player = Player()
     kbd = Keyboard()
-    interaction = Interaction(kbd, globals.Walls, globals.Enemies, player, globals.Doors)
-    def LoadLevel(self, enemyList, wallList, doorList, obstacleList):
-        globals.Enemies = []
-        globals.Obstacles = []
-        globals.Walls = []
-        for enemy in enemyList:
-            globals.Enemies.append(enemy)
+    interaction = Interaction(kbd, Walls, Enemies, player, Doors)
+
+    
+
+    def LoadLevel(self, meleeEnemiesList, rangedEnemiesList, doorList, obstacleList):
+        Levels.MeleeEnemies = []
+        Levels.RangedEnemies = []
+        Levels.Obstacles = []
+        Levels.FriendlyProjectiles = []
+        Levels.EnemyProjectiles = []
+        Levels.room = None
+        Levels.ObjInteractions = []
+        Levels.allObj = []
+        Levels.Enemies = []
+        Levels.Obstacles = obstacleList
+        for obstacle in obstacleList:
+            Levels.allObj.append(obstacle)
+        Levels.MeleeEnemies = meleeEnemiesList
+        for enemy in meleeEnemiesList:
+            Levels.allObj.append(enemy)
+            Levels.Enemies.append(enemy)
+        Levels.RangedEnemies = rangedEnemiesList
+        for enemy in rangedEnemiesList:
+            Levels.allObj.append(enemy)
+            Levels.Enemies.append(enemy)
+        Levels.Doors = []
         for door in doorList:
-            globals.Doors.append(door)
+            Levels.Doors.append(door)
+        
     
     @staticmethod
     def update():
@@ -41,8 +80,8 @@ class Levels:
     def draw(canvas):
         #Levels.room.draw(canvas)
         Levels.player.draw(canvas)
-        #for rock in Levels.Rocks:
-        #    rock.draw(canvas)
+        #for obstacle in Levels.Obstacles:
+        #    obstacle.draw(canvas)
         #for melee in Levels.MeleeEnemies:
         #    melee.draw(canvas)
         #for ranged in Levels.RangedEnemies:
@@ -53,8 +92,8 @@ class Levels:
         #    projectiles.draw(canvas)
         for wall in globals.Walls:
             wall.draw(canvas)
-        #for gate in Levels.Gates:
-        #    gate.draw(canvas)
+        #for door in Levels.Doors:
+        #    door.draw(canvas)
         canvas.draw_text("Room: " + str(Levels.roomText), (10, 9), 15, "White")
         canvas.draw_text("Score: " + str(globals.score), (930, 9), 15, "White")
     
@@ -69,13 +108,13 @@ class Levels:
         #Levels.MeleeEnemies = []  # list of melee enemies
         #Levels.ObjInteractions = []  # just initialising var to store interactions between melee enemies
         #Levels.RangedEnemies = []  # list of ranged enemies
-        #Levels.Rocks = []  # List of rocks
+        #Levels.Obstacles = []  # List of obstacles
         Levels.Projectiles = []  # list of projectiles
         Levels.wall_interactions = []  # list of wall interactions to help keep player within the walls
         #for wall in globals.Walls:
         #    Levels.wall_interactions.append(Interaction(Levels.player, wall))
-        #Levels.Gates = []  # list of gates to move player between levels
-        #Levels.GateInteractions = []  # list of interactions for above gates
+        #Levels.Doors = []  # list of doors to move player between levels
+        #Levels.DoorInteractions = []  # list of interactions for above doors
         Levels.roomText = 0  # text to represent what room the player is in
         globals.score = 0
         #Levels.projectileCollision = ProjectileCollision(Levels.player)
